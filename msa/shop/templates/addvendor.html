@@ -1,0 +1,53 @@
+{% extends 'base.html' %} 
+{% block title %} MSA-Add Vendor{% endblock %}
+{% load static %}
+{% block style %} 
+
+    <style>
+        body{
+            background-image: url('../static/imgs/medimg.png');
+            background-repeat: no-repeat;
+            background-position: 300px 100px;
+            background-size: 65% 99%;
+        }
+        
+    </style>
+
+
+{% endblock %}
+{% block content %}
+<div style="display: flex;">
+<img src="{% static 'imgs/iconimg3.png' %}" alt="#" style="float: left; width:10%; height:20%;">
+<div style="margin-left: 40px;">
+<h1>Add New Vendor</h1>
+<br/>
+
+<form method="POST" action="{% url 'addvendor' %}">
+    {% csrf_token %}
+
+	<label for="vendorname" class="form-label">Name</label>
+    <div class="mb-3">
+      <input type="text" class="form-control" id="vendorname" placeholder="Vendor Name" name="name">
+    </div>
+    <label for="address" class="form-label">Address</label>
+    <div class="mb-3">
+        <input type="text" class="form-control" id="address" placeholder="Address" name="address">
+    </div>
+    <label for="description" class="form-label">Phone Number</label>
+    <div class="mb-3">
+        <input type="tel" class="form-control" id="phone" placeholder="Phone Number" name="phone">
+    </div>
+    <label for="email" class="form-label">Email Address</label>
+    <div class="mb-3">
+        <input type="email" class="form-control" id="email" placeholder="Email Address" name="email">
+    </div>
+	<br/><br/><br/>
+    <button type="submit" class="btn btn-primary" style="background-color: rgb(76, 145, 7);">Add Vendor</button>
+
+
+</form>
+</div>
+</div>
+
+  <br/><br/><br/><br/>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}MSA-New Supply Vendors{% endblock %}
+
+<style>
+  body{
+      background-image: url('../static/imgs/medimg2.png');
+      background-repeat: no-repeat;
+      background-position: 300px 100px;
+      background-size: 65% 99%;
+  }
+
+  th{
+    font-size: large ;  
+    font-weight: 400;
+  }
+  
+</style>
+
+{% block content %}
+
+<h2></h2>
+<div  class ="abcd" style=" height: 1000px; width: 1000px; background-image: url('../static/imgs/transmedimg.png'); background-repeat: no-repeat; background-position: 250px 0px; ">
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-striped table-hover ">
+        <thead>
+          <tr>
+            <th scope="col">Serial Number</th>
+            <th scope="col">Vendor ID</th>
+            <th scope="col">Vendor Name</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Email</th>
+            <th scope="col">New Supply</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for vendor in vendors.all %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ vendor.id }}</td>
+            <td>{{ vendor.name }}</td>
+            <td>{{ vendor.phone }}</td>
+            <td>{{ vendor.email }}</td>
+            <td align="center">
+              <form method="get" action="{% url 'newsupplymed' vendor.id %}">
+                {% csrf_token%}
+
+                <button type="submit" class="btn btn-primary" style="background-color: rgba(25, 165, 12, 0.685);">
+                  New Supply
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

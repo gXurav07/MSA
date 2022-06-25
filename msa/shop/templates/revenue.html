@@ -1,0 +1,32 @@
+{% extends 'base.html' %} 
+{% block title %}MSA-Calculate Revenue{% endblock %}
+
+{% block content %}
+<h1 style="padding-bottom: 0px;  margin: 0px 0px 30px 190px; font-weight: 500; color: rgba(70, 70, 70, 0.733); text-decoration: underline; text-shadow: 2px 2px rgba(0, 0, 0, 0.24);">Calculate Revenue</h1>
+<br/>
+<div style="display: flex;">
+  <img src="../static/imgs/revimg.png" alt="">
+<form method="POST" action="{% url 'revenue' %}" style="margin-left: 40px;" class="form-horizontal">
+    {% csrf_token %}
+  <div class="form-group" style="display: flex;">
+	<label for="start_date" class="form-label" style="float: left; margin-right: 16px; padding-top: 5px; font-weight: 450; font-size: large;">Start Date:</label>
+    <div class="mb-3">
+      <input type="date" class="form-control" id="start_date" name="start_date">
+    </div>
+    </div>
+     
+    <div class="form-group" style="display: flex;">
+    <label for="end_date" class="form-label" style="float: left; margin-right: 16px; padding-top: 5px;  font-weight: 450; font-size: large">End Date:</label>
+    <div class="mb-3">
+        <input type="date" class="form-control" id="end_date" name="end_date">
+    </div>
+    </div>
+	<br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+</div>
+
+  <br/>
+  {% block result %} {%endblock%}
+{% endblock %}

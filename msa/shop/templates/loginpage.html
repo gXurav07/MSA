@@ -1,0 +1,52 @@
+{% load static %}
+<html>
+  <head>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <!-- <link rel="stylesheet" href="../static/css/login.css"> -->
+    <link rel="stylesheet" href="{%  static  '../static/css/login.css'  %}" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/imgs/iconimg.png" type="image/x-icon">
+    <title>MSA-Login</title>
+  </head>
+  <body>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <div class="fadeIn first">
+          <img src="../static/imgs/iconimg.png" id="icon" alt="User Icon" />
+        </div>
+        <form class="site-form" method="post">
+          {% csrf_token%}
+          <input
+          style="background-color: rgba(175, 173, 173, 0.452);"
+            type="text"
+            id="login"
+            class="fadeIn second"
+            name="username"
+            placeholder="Username"
+          />
+          <input
+          style="background-color: rgba(175, 173, 173, 0.452);"
+            type="password"
+            id="password"
+            class="fadeIn third"
+            name="password"
+            placeholder="password"
+          />
+          {% for message in messages %}
+          <p id="messages">{{message}}</p>
+          {% endfor %}
+          <input type="submit" class="fadeIn fourth" value="Log In" />
+        </form>
+        <p> New to MSA? &nbsp; <a href="{% url 'register' %}">Register</a></p>
+      </div>
+    </div>
+    
+    
+
+  </body>
+</html>
