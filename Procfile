@@ -1,0 +1,1 @@
+worker: /msa/manage.py
