@@ -1,1 +1,1 @@
-worker: /msa/manage.py
+worker: ./msa/manage.py
